@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Net Pay Program</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Net Pay Program</h1>
+    <h2>V.1</h2>
+    <p>will calculate the net pay of a broke boy using gross pay and deducting federal, state, and fica. it has options like deducting additional ammounts from your check. then it displays your net pay.</p>
+    <!--Federal is 15%-->
+    <!--State is 5%-->
+    <!--Fica is 7.62%-->
+    <!--If any additional-->
+    <ol>
+        <li>Start</li>
+        <li>set variables fed=.15 state=.05 fica=.0762</li>
+        <li>Display "enter gross pay"</li>
+        <li>input gross_pay</li>
+        <li>Display "any additional deductions"</li>
+        <li>input additional</li>
+        <li>tax1=gross_pay*fed</li>
+        <li>tax2=gross_pay*state</li>
+        <li>tax3=gross_pay*fica</li>
+        <li>taxes=tax1+tax2+tax3+additional</li>
+        <li>net_pay=gross_pay-taxes</li>
+        <li>Display "your net pay after is net_pay"</li>
+        <li>End</li>
+    </ol>
+    <p>enter gross pay and additional deductions</p>
+    <p>your net pay is <span id="net_pay"></span></p>
+    <form action="#" onsubmit="net()">
+        <input type="text" id="gross_pay">
+        <input type="text" id="additional" value="0">
+        <input type="submit" value="submit">
+    </form>
+    <form action="#" onsubmit="net()">
+    <p>Pleaase enter your gross pay</p>
+    <label for="gross_pay">Gross Pay:</label>
+    <input id="gross_pay" type="number" name="gross_pay" value="0">
+    <p>Please enter your additional deductions</p>
+    <label for="additional">Additional Deductions:</label>
+    <input id="additional" type="number" name="additional" value="0">
+    <input type="submit" value="Submit">
+    <p>your net pay is <span id="net_pay"></span> </p>
+    </form>
+
+    <script>
+        function net() {
+            event.preventDefault();
+            var output = document.getElementById("net_pay");
+            var gross_pay = parseInt(document.getElementById("gross_pay").value) ;
+            var additional = parseInt(document.getElementById("additional").value) ;
+            var fed = .15;
+            var state = .05;
+            var fica = .0762;
+            var tax1 = gross_pay * fed;
+            var tax2 = gross_pay * state;
+            var tax3 = gross_pay * fica;
+            var taxes = tax1 + tax2 + tax3 + additional;
+            var net_pay = gross_pay - taxes;
+            output.innerHTML = net_pay;
+        }
+    </script>
+
+    
+</body>
+</html>
